@@ -12,13 +12,24 @@
       <h3 class="product-list__item-title">
         {{item.name}}
       </h3>
-      <img :src="item.picture" alt="img">
-      <h4>{{item.price}}</h4>
+      <img
+        class="product-list__item-picture" 
+        :src="item.picture" alt="img"
+      >
+      <h4 class="product-list__item-price">{{item.price}}</h4>
+      <button 
+        class="product-list__button"
+        @click="addToCart(item)"
+      >
+       Add to cart
+      </button>
     </li>
     </ul>  
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "ProductList",
   props: {
@@ -26,6 +37,9 @@ export default {
       type: Array,
       default: null
     }
+  },
+  methods: {
+    ...mapActions(["addToCart"])
   }
 };
 </script>
