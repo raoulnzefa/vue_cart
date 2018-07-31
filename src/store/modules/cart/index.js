@@ -6,7 +6,12 @@ const state = {
 };
 
 const getters = {
-  selectedProducts: state => state.selectedProducts
+  selectedProducts: state => state.selectedProducts,
+  selectedProductCount: state => {
+    if (state.selectedProducts && Array.isArray(state.selectedProducts)) {
+      return state.selectedProducts.length;
+    }
+  }
 };
 
 export default {

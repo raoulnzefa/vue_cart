@@ -29,6 +29,24 @@ const mutations = {
     } else {
       state.selectedProducts = [cartItem];
     }
+  },
+
+  increaseProductNumber(state, product) {
+    const index = state.selectedProducts.indexOf(product);
+    state.selectedProducts[index].number++;
+  },
+
+  decreaseProductNumber(state, product) {
+    const index = state.selectedProducts.indexOf(product);
+
+    if (state.selectedProducts[index].number > 1) {
+      state.selectedProducts[index].number--;
+    }
+  },
+
+  removeSelectedProduct(state, product) {
+    const index = state.selectedProducts.indexOf(product);
+    state.selectedProducts.splice(index, 1);
   }
 };
 

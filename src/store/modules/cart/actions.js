@@ -6,19 +6,41 @@ const actions = {
     dispatch("syncCart");
   },
 
-  syncCart({ state, commit }) {
-    /* Sync cart with local storage */
-    if (state.selectedProducts) {
-      localStorage.setItem(
-        "selectedProducts",
-        JSON.stringify(state.selectedProducts)
-      );
-    } else {
+  increaseOrder({ dispatch, commit }, product) {
+    commit("increaseProductNumber", product);
+    dispatch("syncCart");
+  },
+
+  decreaseOrder({ dispatch, commit }, product) {
+    commit("decreaseProductNumber", product);
+    dispatch("syncCart");
+  },
+
+  removeOrder({ dispatch, commit }, product) {
+    commit("removeSelectedProduct", product);
+    dispatch("syncCart");
+  },
+
+  clearCart({ commit, dispatch }) {
+    commit("updateSelectedProducts", null);
+    dispatch("syncCart");
+  },
+
+  syncCart({ state }) {
+    /* Sync cart with local storage  */
+    localStorage.setItem(
+      "selectedProducts",
+      JSON.stringify(state.selectedProducts)
+    );
+  },
+
+  loadCart({ commit }) {
+    /* Load cart from local storage */
+    if (localStorage.getItem("selectedProducts"))
       commit(
         "updateSelectedProducts",
         JSON.parse(localStorage.getItem("selectedProducts"))
       );
-    }
   }
 };
 
