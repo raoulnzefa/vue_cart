@@ -4,48 +4,55 @@
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "2",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "3",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "4",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "5",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "6",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   },
   {
     "id": "7",
     "name": "Nike Runallday",
     "picture":
       "http://stock.rv.ua/wp-content/uploads/2018/03/2_53g2wsvdu1ju8qvx3oy84qhrq.jpg",
-    "price": "50"
+    "price": "50",
+    "currency": "$"
   }
 ]

@@ -6,17 +6,17 @@ const actions = {
     dispatch("syncCart");
   },
 
-  increaseOrder({ dispatch, commit }, product) {
+  increaseOrderValue({ dispatch, commit }, product) {
     commit("increaseProductNumber", product);
     dispatch("syncCart");
   },
 
-  decreaseOrder({ dispatch, commit }, product) {
+  decreaseOrderValue({ dispatch, commit }, product) {
     commit("decreaseProductNumber", product);
     dispatch("syncCart");
   },
 
-  removeOrder({ dispatch, commit }, product) {
+  removeFromCart({ dispatch, commit }, product) {
     commit("removeSelectedProduct", product);
     dispatch("syncCart");
   },

@@ -1,37 +1,31 @@
 <template>
-  <ul
-    id="productList"
-    class="product-list"
-    v-if="items && items.length>0"  
-  >
-    <li 
-      class="product-list__item"
+    <div
+      id="productList"
+      class="product-list"
+      v-if="items && items.length>0"  
+    >
+    <product 
       v-for="item in items"
       :key="item.id"
-    >
-      <h3 class="product-list__item-title">
-        {{item.name}}
-      </h3>
-      <img
-        class="product-list__item-picture" 
-        :src="item.picture" alt="img"
-      >
-      <h4 class="product-list__item-price">{{item.price}}</h4>
-      <button 
-        class="product-list__button"
-        @click="addToCart(item)"
-      >
-       Add to cart
-      </button>
-    </li>
-    </ul>  
+      :item="item"
+      button-title="Add to cart"
+      @button-click="addToCart"
+    />
+    <slot>
+      <!-- Additional features -->
+    </slot>
+  </div>  
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import Product from "../Product";
 
 export default {
   name: "ProductList",
+  components: {
+    Product
+  },
   props: {
     items: {
       type: Array,
