@@ -1,7 +1,7 @@
 const mutations = {
-  updateProductList(state, value) {
-    state.productList = value;
+  updateProductList (state, value) {
+    state.productList = value
   }
-};
+}
 
-export default mutations;
+export default mutations

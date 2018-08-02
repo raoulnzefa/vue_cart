@@ -1,8 +1,8 @@
 /* API mockups */
-import productList from "./products.json";
+import productList from './products.json'
 
-export function getProductList() {
+export function getProductList () {
   return new Promise((resolve, reject) => {
-    resolve(productList);
-  });
+    resolve(productList)
+  })
 }

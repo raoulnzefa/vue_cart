@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import ProductCart from "../../ProductCart";
+import ProductCart from '../../ProductCart'
 
 export default {
-  name: "PageCart",
+  name: 'PageCart',
   components: {
     ProductCart
   }
-};
+}
 </script>

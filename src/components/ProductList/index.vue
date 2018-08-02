@@ -2,9 +2,9 @@
     <div
       id="productList"
       class="product-list"
-      v-if="Array.isArray(items)"  
+      v-if="Array.isArray(items)"
     >
-    <product 
+    <product
       v-for="item in items"
       :key="item.id"
       :item="item"
@@ -14,15 +14,15 @@
     <slot>
       <!-- Additional features -->
     </slot>
-  </div>  
+  </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import Product from "../Product";
+import { mapActions } from 'vuex'
+import Product from '../Product'
 
 export default {
-  name: "ProductList",
+  name: 'ProductList',
   components: {
     Product
   },
@@ -33,8 +33,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["addOrder"])
+    ...mapActions(['addOrder'])
   }
-};
+}
 </script>
-

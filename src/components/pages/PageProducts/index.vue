@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import ProductList from "../../ProductList";
+import { mapGetters } from 'vuex'
+import ProductList from '../../ProductList'
 
 export default {
-  name: "PageProducts",
+  name: 'PageProducts',
   components: {
     ProductList
   },
   computed: {
-    ...mapGetters(["productList"])
+    ...mapGetters(['productList'])
   }
-};
+}
 </script>

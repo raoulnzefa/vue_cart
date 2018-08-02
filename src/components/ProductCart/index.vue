@@ -3,12 +3,12 @@
     <!-- Clear cart -->
     <button @click="clearCart()">Remove all</button>
     <!-- List of selected products -->
-    <div 
+    <div
       class="product-cart__list"
       v-if="Array.isArray(selectedProducts)"
     >
-      <product-cart-item 
-        v-for="item in sortedItems"
+      <product-cart-item
+        v-for="item in selectedProducts"
         :key="item.id"
         :item="item"
       />
@@ -21,28 +21,19 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import ProductCartItem from "../ProductCartItem";
+import { mapGetters, mapActions } from 'vuex'
+import ProductCartItem from '../ProductCartItem'
 
 export default {
-  name: "ProductCart",
+  name: 'ProductCart',
   components: {
     ProductCartItem
   },
   computed: {
-    ...mapGetters(["selectedProducts", "selectedProductsPrice"]),
-    /* Returns an array of selected 
-    products sorted by date of selection */
-    sortedItems: function() {
-      if (Array.isArray(this.selectedProducts))
-        return this.selectedProducts.sort((a, b) => {
-          if (a.date > b.date) return -1;
-          else return 1;
-        });
-    }
+    ...mapGetters(['selectedProducts', 'selectedProductsPrice'])
   },
   methods: {
-    ...mapActions(["clearCart"])
+    ...mapActions(['clearCart'])
   }
-};
+}
 </script>

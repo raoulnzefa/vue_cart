@@ -1,17 +1,17 @@
 <template>
-  <div 
-    id="product" 
+  <div
+    id="product"
     class="product"
   >
     <h3 class="product__title">
       {{item.name}}
     </h3>
     <img
-      class="product__picture" 
+      class="product__picture"
       :src="item.picture" alt="img"
     >
     <h4 class="product__price">{{item.price}}{{item.currency}}</h4>
-    <button 
+    <button
       class="product__button"
       @click="$emit('button-click', item)"
     >
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "Product",
+  name: 'Product',
   props: {
     item: {
       type: Object,
@@ -30,9 +30,8 @@ export default {
     },
     buttonTitle: {
       type: String,
-      default: "Button"
+      default: 'Button'
     }
   }
-};
+}
 </script>
-

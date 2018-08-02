@@ -1,11 +1,11 @@
-import { getProductList } from "../../../api";
+import { getProductList } from '../../../api'
 
 const actions = {
-  loadProductList({ commit }) {
+  loadProductList ({ commit }) {
     getProductList().then(result => {
-      commit("updateProductList", result);
-    });
+      commit('updateProductList', result)
+    })
   }
-};
+}
 
-export default actions;
+export default actions

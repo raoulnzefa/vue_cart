@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import { mutations } from '../../../src/store/index';
+import { mutations } from '../../../src/store/index'
 
 const { updateProductList } = mutations
 

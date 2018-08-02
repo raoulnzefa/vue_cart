@@ -1,35 +1,46 @@
-import mutations from "./mutations";
-import actions from "./actions";
+import mutations from './mutations'
+import actions from './actions'
 
 const state = {
   selectedProducts: null
-};
+}
 
 const getters = {
-  selectedProducts: state => state.selectedProducts,
+  /* Returns an array of selected
+    products sorted by date of selection */
+  selectedProducts: state => {
+    if (Array.isArray(state.selectedProducts)) {
+      return state.selectedProducts.sort((a, b) => {
+        if (a.date > b.date) return -1
+        else return 1
+      })
+    } else {
+      return state.selectedProducts
+    }
+  },
   // Count of selected products
   selectedProductsCount: state => {
     if (Array.isArray(state.selectedProducts)) {
-      return state.selectedProducts.length;
+      return state.selectedProducts.length
     } else {
-      return 0;
+      return 0
     }
   },
   // Total price of selected products
   selectedProductsPrice: state => {
     if (Array.isArray(state.selectedProducts)) {
       return state.selectedProducts.reduce((result, item) => {
-        return (result += item.number * item.price);
-      }, 0);
+        return (result += item.number * item.price)
+      }, 0)
     } else {
-      return 0;
+      return 0
     }
   }
-};
+}
 
 export default {
   state,
   getters,
   mutations,
   actions
-};
+}
