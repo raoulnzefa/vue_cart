@@ -12,6 +12,8 @@
     <input 
       type="number"
       v-model="itemNumber"
+      min="1"
+      @focusout="validateInput"
     >
     <button @click="decreaseOrderValue(item)">-</button>
   </div>
@@ -40,7 +42,7 @@ export default {
         return this.item.number;
       },
       set: function(value) {
-        this.setOrderValue({ product: this.item, value: value });
+        if (value > 0) this.setOrderValue({ product: this.item, value: value });
       }
     }
   },
@@ -50,7 +52,10 @@ export default {
       "increaseOrderValue",
       "decreaseOrderValue",
       "removeFromCart"
-    ])
+    ]),
+    validateInput(e) {
+      if (e.target.value < 1) e.target.value = 1;
+    }
   }
 };
 </script>

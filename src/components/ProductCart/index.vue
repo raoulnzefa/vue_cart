@@ -14,7 +14,7 @@
       />
     </div>
     <!-- Total price -->
-    <h3>
+    <h3 v-if="selectedProductsPrice>0">
       Total price: {{selectedProductsPrice}}
     </h3>
   </div>
