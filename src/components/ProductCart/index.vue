@@ -5,7 +5,7 @@
     <!-- List of selected products -->
     <div 
       class="product-cart__list"
-      v-if="selectedProducts && selectedProducts.length>0"
+      v-if="Array.isArray(selectedProducts)"
     >
       <product-cart-item 
         v-for="item in sortedItems"
@@ -15,7 +15,7 @@
     </div>
     <!-- Total price -->
     <h3>
-      Total price: {{cartTotalPrice}}
+      Total price: {{selectedProductsPrice}}
     </h3>
   </div>
 </template>
@@ -30,11 +30,11 @@ export default {
     ProductCartItem
   },
   computed: {
-    ...mapGetters(["selectedProducts", "cartTotalPrice"]),
+    ...mapGetters(["selectedProducts", "selectedProductsPrice"]),
     /* Returns an array of selected 
     products sorted by date of selection */
     sortedItems: function() {
-      if (this.selectedProducts && this.selectedProducts.length > 0)
+      if (Array.isArray(this.selectedProducts))
         return this.selectedProducts.sort((a, b) => {
           if (a.date > b.date) return -1;
           else return 1;

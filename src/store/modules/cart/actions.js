@@ -1,7 +1,7 @@
 const actions = {
-  addToCart({ commit, dispatch }, product) {
+  addOrder({ commit, dispatch }, product) {
     // Update store
-    commit("appendProduct", product);
+    commit("appendSelectedProduct", product);
     // Save changed data
     dispatch("syncCart");
   },
@@ -32,7 +32,7 @@ const actions = {
   },
 
   syncCart({ state }) {
-    /* Sync cart with local storage  */
+    /* Update local storage  */
     localStorage.setItem(
       "selectedProducts",
       JSON.stringify(state.selectedProducts)

@@ -14,7 +14,9 @@
         tag="button"
       >
         Cart 
-        <span>{{ selectedProductCount }}</span>
+        <span v-if="selectedProductsCount>0">
+          {{ selectedProductsCount }}
+        </span>
       </router-link>
     </header>
     <router-view />
@@ -33,7 +35,7 @@ export default {
     this.$store.dispatch("loadCart");
   },
   computed: {
-    ...mapGetters(["selectedProductCount"])
+    ...mapGetters(["selectedProductsCount"])
   }
 };
 </script>

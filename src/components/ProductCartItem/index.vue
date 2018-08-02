@@ -10,7 +10,7 @@
     <!-- Сhange the number of products -->
     <button @click="increaseOrderValue(item)">+</button>
     <input 
-      type="text"
+      type="number"
       v-model="itemNumber"
     >
     <button @click="decreaseOrderValue(item)">-</button>

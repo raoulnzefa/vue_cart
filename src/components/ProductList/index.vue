@@ -2,14 +2,14 @@
     <div
       id="productList"
       class="product-list"
-      v-if="items && items.length>0"  
+      v-if="Array.isArray(items)"  
     >
     <product 
       v-for="item in items"
       :key="item.id"
       :item="item"
       button-title="Add to cart"
-      @button-click="addToCart"
+      @button-click="addOrder"
     />
     <slot>
       <!-- Additional features -->
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["addToCart"])
+    ...mapActions(["addOrder"])
   }
 };
 </script>
