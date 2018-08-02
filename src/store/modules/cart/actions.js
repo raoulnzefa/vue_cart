@@ -6,6 +6,11 @@ const actions = {
     dispatch("syncCart");
   },
 
+  setOrderValue({ commit, dispatch }, { product, value }) {
+    commit("updateProductNumber", { product: product, value: value });
+    dispatch("syncCart");
+  },
+
   increaseOrderValue({ dispatch, commit }, product) {
     commit("increaseProductNumber", product);
     dispatch("syncCart");

@@ -1,5 +1,6 @@
 <template>
   <div id="pageCart" class="page-cart">
+    <h2>Cart</h2>
     <product-cart />
   </div>
 </template>

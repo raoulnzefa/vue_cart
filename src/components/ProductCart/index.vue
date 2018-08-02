@@ -1,39 +1,40 @@
 <template>
   <div id="productCart" class="product-cart">
+    <!-- Clear cart -->
     <button @click="clearCart()">Remove all</button>
-    <ul 
+    <!-- List of selected products -->
+    <div 
       class="product-cart__list"
-      v-for="item in sortedItems"
-      :key="item.id"
+      v-if="selectedProducts && selectedProducts.length>0"
     >
-      <product 
+      <product-cart-item 
+        v-for="item in sortedItems"
+        :key="item.id"
         :item="item"
-        button-title="Remove from cart"
-        @button-click="removeFromCart"
       />
-      <h6>{{item.number}}</h6>
-      <h6>{{item.price * item.number}}</h6>
-      <button @click="increaseOrderValue(item)">+</button>
-      <button @click="decreaseOrderValue(item)">-</button>
-    </ul>
+    </div>
+    <!-- Total price -->
+    <h3>
+      Total price: {{cartTotalPrice}}
+    </h3>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Product from "../Product";
+import ProductCartItem from "../ProductCartItem";
 
 export default {
   name: "ProductCart",
   components: {
-    Product
+    ProductCartItem
   },
   computed: {
-    ...mapGetters(["selectedProducts"]),
-    /* Returns array of selected products, 
-    sorted by date of selection */
+    ...mapGetters(["selectedProducts", "cartTotalPrice"]),
+    /* Returns an array of selected 
+    products sorted by date of selection */
     sortedItems: function() {
-      if (this.selectedProducts && Array.isArray(this.selectedProducts))
+      if (this.selectedProducts && this.selectedProducts.length > 0)
         return this.selectedProducts.sort((a, b) => {
           if (a.date > b.date) return -1;
           else return 1;
@@ -41,12 +42,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions([
-      "increaseOrderValue",
-      "decreaseOrderValue",
-      "removeFromCart",
-      "clearCart"
-    ])
+    ...mapActions(["clearCart"])
   }
 };
 </script>
