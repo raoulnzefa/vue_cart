@@ -45,7 +45,7 @@ describe('Vuex module: cart', () => {
           with key "date" that equals to current date, and key "number", 
           that equals to "1"`, () => {
         const state = {
-          selectedProducts: null
+          selectedProducts: []
         }
         const product = new Product(1, 'product', '50', '$')
         const expectedDate = new Date()
@@ -108,6 +108,18 @@ describe('Vuex module: cart', () => {
           of the selected product`, () => {
         const selectedProduct = new Product(1, 'product', '50', '$')
         selectedProduct.number = 2
+        selectedProduct.date = new Date()
+        const state = {
+          selectedProducts: [selectedProduct]
+        }
+        cart.mutations.decreaseProductNumber(state, state.selectedProducts[0])
+
+        expect(state.selectedProducts[0].number).to.equal(1)
+      })
+      it(`should not decrease the value if number of the      
+          selected product is not grater than 1`, () => {
+        const selectedProduct = new Product(1, 'product', '50', '$')
+        selectedProduct.number = 1
         selectedProduct.date = new Date()
         const state = {
           selectedProducts: [selectedProduct]
