@@ -18,7 +18,7 @@ const getters = {
       return null
     }
   },
-  // Count of selected products
+  // Count of the selected products
   selectedProductsCount: state => {
     if (Array.isArray(state.selectedProducts)) {
       return state.selectedProducts.length
@@ -26,7 +26,7 @@ const getters = {
       return 0
     }
   },
-  // Total price of selected products
+  // Total price of the selected products
   selectedProductsPrice: state => {
     if (Array.isArray(state.selectedProducts)) {
       return state.selectedProducts.reduce((result, item) => {

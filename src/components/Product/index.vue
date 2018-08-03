@@ -10,7 +10,7 @@
       class="product__picture"
       :src="item.picture" alt="img"
     >
-    <h4 class="product__price">{{item.price}}{{item.currency}}</h4>
+    <h4 class="product__price">{{item.price}}{{currency}}</h4>
     <button
       class="product__button"
       @click="$emit('button-click', item)"
@@ -26,6 +26,10 @@ export default {
   props: {
     item: {
       type: Object,
+      required: true
+    },
+    currency: {
+      type: String,
       required: true
     },
     buttonTitle: {

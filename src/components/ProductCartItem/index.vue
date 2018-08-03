@@ -2,6 +2,7 @@
   <div id="ProductCartItem" class="product-cart-item">
     <product
           :item="item"
+          :currency="currency"
           button-title="Remove from cart"
           @button-click="removeFromCart"
     />
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Product from '../Product'
 
 export default {
@@ -35,6 +36,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['currency']),
     /* Two-way computed property for
     changing the value in the input */
     itemNumber: {

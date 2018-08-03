@@ -15,7 +15,7 @@
     </div>
     <!-- Total price -->
     <h3 v-if="selectedProductsPrice>0">
-      Total price: {{selectedProductsPrice}}
+      Total price: {{selectedProductsPrice}}{{currency}}
     </h3>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
     ProductCartItem
   },
   computed: {
-    ...mapGetters(['selectedProducts', 'selectedProductsPrice'])
+    ...mapGetters(['selectedProducts', 'selectedProductsPrice', 'currency'])
   },
   methods: {
     ...mapActions(['clearCart'])

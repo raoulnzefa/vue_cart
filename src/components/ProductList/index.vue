@@ -8,6 +8,7 @@
       v-for="item in items"
       :key="item.id"
       :item="item"
+      :currency="currency"
       button-title="Add to cart"
       @button-click="addOrder"
     />
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Product from '../Product'
 
 export default {
@@ -31,6 +32,9 @@ export default {
       type: Array,
       default: null
     }
+  },
+  computed: {
+    ...mapGetters(['currency'])
   },
   methods: {
     ...mapActions(['addOrder'])
