@@ -86,6 +86,21 @@ describe('Vuex module: cart', () => {
 
         expect(state.selectedProducts[0].number).to.equal(10)
       })
+      it(`should not update a number of the selected product if
+          the input value is less then 1`, () => {
+        const selectedProduct = new Product(1, 'product', '50', '$')
+        selectedProduct.number = 1
+        selectedProduct.date = new Date()
+        const state = {
+          selectedProducts: [selectedProduct]
+        }
+        cart.mutations.updateProductNumber(state, {
+          product: state.selectedProducts[0],
+          value: -2
+        })
+
+        expect(state.selectedProducts[0].number).to.equal(1)
+      })
     })
 
     describe('increaseProductNumber', () => {
@@ -277,6 +292,69 @@ describe('Vuex module: cart', () => {
         cart.actions.loadCart({commit})
 
         return commit.should.not.have.been.called
+      })
+    })
+  })
+
+  describe('Getters', () => {
+    describe('selectedProducts', () => {
+      it(`should return an array of selected
+          products sorted by date of selection`, () => {
+        const product1 = new Product(1, 'product1', '50', '$')
+        product1.number = 1
+        product1.date = new Date()
+        product1.date.setDate(1)
+        const product2 = new Product(2, 'product2', '50', '$')
+        product2.number = 1
+        product2.date = new Date()
+        product2.date.setDate(2)
+        const product3 = new Product(3, 'product3', '50', '$')
+        product3.number = 1
+        product3.date = new Date()
+        product3.date.setDate(3)
+        const product4 = new Product(4, 'product3', '50', '$')
+        product4.number = 1
+        product4.date = new Date()
+        product4.date.setDate(4)
+        const product5 = new Product(5, 'product3', '50', '$')
+        product5.number = 1
+        product5.date = new Date()
+        product5.date.setDate(5)
+        const state = {
+          selectedProducts: [product2, product1, product3, product5, product4]
+        }
+        const sortedArray = [product5, product4, product3, product2, product1]
+
+        expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
+      })
+      it(`should return an array of selected
+          products sorted by date of selection`, () => {
+        const product1 = new Product(1, 'product1', '50', '$')
+        product1.number = 1
+        product1.date = new Date()
+        product1.date.setDate(1)
+        const product2 = new Product(2, 'product2', '50', '$')
+        product2.number = 1
+        product2.date = new Date()
+        product2.date.setDate(2)
+        const product3 = new Product(3, 'product3', '50', '$')
+        product3.number = 1
+        product3.date = new Date()
+        product3.date.setDate(3)
+        const product4 = new Product(4, 'product3', '50', '$')
+        product4.number = 1
+        product4.date = new Date()
+        product4.date.setDate(4)
+        const product5 = new Product(5, 'product3', '50', '$')
+        product5.number = 1
+        product5.date = new Date()
+        product5.date.setDate(5)
+        const state = {
+          selectedProducts: [product2, product1, product3, product5, product4]
+        }
+        const sortedArray = [product5, product4, product3, product2, product1]
+
+        expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
       })
     })
   })

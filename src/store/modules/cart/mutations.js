@@ -31,8 +31,10 @@ const mutations = {
   },
 
   updateProductNumber (state, { product, value }) {
-    const index = state.selectedProducts.indexOf(product)
-    state.selectedProducts[index].number = value
+    if (value > 0) {
+      const index = state.selectedProducts.indexOf(product)
+      state.selectedProducts[index].number = value
+    }
   },
 
   increaseProductNumber (state, product) {

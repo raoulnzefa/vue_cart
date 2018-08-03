@@ -15,7 +15,7 @@ const getters = {
         else return 1
       })
     } else {
-      return state.selectedProducts
+      return null
     }
   },
   // Count of selected products
