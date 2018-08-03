@@ -5,7 +5,7 @@ const DEFAULT_CURRENCY = '$'
 
 const state = {
   productList: null,
-  currency: '$'
+  currency: DEFAULT_CURRENCY
 }
 
 const getters = {
