@@ -298,7 +298,7 @@ describe('Vuex module: cart', () => {
 
   describe('Getters', () => {
     describe('selectedProducts', () => {
-      it(`should return an array of selected
+      it(`should return an array of the selected
           products sorted by date of selection`, () => {
         const product1 = new Product(1, 'product1', '50', '$')
         product1.number = 1
@@ -327,34 +327,62 @@ describe('Vuex module: cart', () => {
 
         expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
       })
-      it(`should return an array of selected
-          products sorted by date of selection`, () => {
+      it('should return "null" if "selectedProducts" is not array', () => {
+        const state = {
+          selectedProducts: null
+        }
+
+        expect(cart.getters.selectedProducts(state)).to.equal(null)
+      })
+    })
+    describe('selectedProductsCount', () => {
+      it(`should return a count of the selected products`, () => {
         const product1 = new Product(1, 'product1', '50', '$')
         product1.number = 1
         product1.date = new Date()
-        product1.date.setDate(1)
         const product2 = new Product(2, 'product2', '50', '$')
         product2.number = 1
         product2.date = new Date()
-        product2.date.setDate(2)
         const product3 = new Product(3, 'product3', '50', '$')
         product3.number = 1
         product3.date = new Date()
-        product3.date.setDate(3)
-        const product4 = new Product(4, 'product3', '50', '$')
-        product4.number = 1
-        product4.date = new Date()
-        product4.date.setDate(4)
-        const product5 = new Product(5, 'product3', '50', '$')
-        product5.number = 1
-        product5.date = new Date()
-        product5.date.setDate(5)
         const state = {
-          selectedProducts: [product2, product1, product3, product5, product4]
+          selectedProducts: [product1, product2, product3]
         }
-        const sortedArray = [product5, product4, product3, product2, product1]
 
-        expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
+        expect(cart.getters.selectedProductsCount(state)).to.equal(3)
+      })
+      it(`should return 0 if the "selectedProducts" is not array`, () => {
+        const state = {
+          selectedProducts: null
+        }
+
+        expect(cart.getters.selectedProductsCount(state)).to.equal(0)
+      })
+    })
+    describe('selectedProductsPrice', () => {
+      it(`should return a total price of the selected products`, () => {
+        const product1 = new Product(1, 'product1', '50', '$')
+        product1.number = 1
+        product1.date = new Date()
+        const product2 = new Product(2, 'product2', '100', '$')
+        product2.number = 1
+        product2.date = new Date()
+        const product3 = new Product(3, 'product3', '200', '$')
+        product3.number = 1
+        product3.date = new Date()
+        const state = {
+          selectedProducts: [product1, product2, product3]
+        }
+
+        expect(cart.getters.selectedProductsPrice(state)).to.equal(350)
+      })
+      it(`should return 0 if the "selectedProducts" is not array`, () => {
+        const state = {
+          selectedProducts: null
+        }
+
+        expect(cart.getters.selectedProductsPrice(state)).to.equal(0)
       })
     })
   })
