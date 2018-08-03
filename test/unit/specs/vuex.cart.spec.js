@@ -133,6 +133,141 @@ describe('Vuex module: cart', () => {
       })
     })
   })
+
+  describe('Actions', () => {
+    describe('addOrder', () => {
+      it(`should dispatch the "appendSelectedProduct" and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        const product = new Product(1, 'product', '50', '$')
+        cart.actions.addOrder({commit, dispatch}, product)
+
+        commit.should.have.been.calledWith('appendSelectedProduct', product)
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('setOrderValue', () => {
+      it(`should dispatch the "updateProductNumber" and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        const product = new Product(1, 'product', '50', '$')
+        const value = 10
+        cart.actions.setOrderValue({commit, dispatch}, {
+          product,
+          value
+        })
+
+        commit.should.have.been.calledWith('updateProductNumber', {
+          product,
+          value
+        })
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('increaseOrderValue', () => {
+      it(`should dispatch the "increaseProductNumber" mutation and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        const product = new Product(1, 'product', '50', '$')
+        cart.actions.increaseOrderValue({commit, dispatch}, product)
+
+        commit.should.have.been.calledWith('increaseProductNumber', product)
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('decreaseOrderValue', () => {
+      it(`should dispatch the "decreaseProductNumber" mutation and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        const product = new Product(1, 'product', '50', '$')
+        cart.actions.decreaseOrderValue({commit, dispatch}, product)
+
+        commit.should.have.been.calledWith('decreaseProductNumber', product)
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('removeFromCart', () => {
+      it(`should dispatch the "removeSelectedProduct" mutation and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        const product = new Product(1, 'product', '50', '$')
+        cart.actions.removeFromCart({commit, dispatch}, product)
+
+        commit.should.have.been.calledWith('removeSelectedProduct', product)
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('clearCart', () => {
+      it(`should dispatch the "updateSelectedProducts" mutation and
+          action "syncCart"`, () => {
+        const commit = sinon.spy()
+        const dispatch = sinon.spy()
+        cart.actions.clearCart({commit, dispatch})
+
+        commit.should.have.been.calledWith('updateSelectedProducts')
+        dispatch.should.have.been.calledWith('syncCart')
+      })
+    })
+
+    describe('syncCart', () => {
+      it(`should save the "selectedItems" list to the "window.localStorage" 
+          object`, () => {
+        const product = new Product(1, 'product', '50', '$')
+        const state = {
+          selectedProducts: [
+            product
+          ]
+        }
+        cart.actions.syncCart({state})
+
+        expect(localStorage.getItem('selectedProducts')).to.equal(JSON.stringify(state.selectedProducts))
+      })
+    })
+
+    describe('loadCart', () => {
+      it(`should get the "selectedItems" list from the "window.localStorage" 
+          and dispatch the "updateSelectedProducts" mutation`, () => {
+        const product = new Product(1, 'product', '50', '$')
+        const state = {
+          selectedProducts: [
+            product
+          ]
+        }
+        const commit = sinon.spy()
+        localStorage.setItem(
+          'selectedProducts',
+          JSON.stringify(state.selectedProducts)
+        )
+        cart.actions.loadCart({commit})
+
+        commit.should.have.been.calledWith(
+          'updateSelectedProducts',
+          JSON.parse(localStorage.getItem('selectedProducts'))
+        )
+      })
+      it(`should not load the "selectedItems" list from the 
+          "window.localStorage" if it is empty`, () => {
+        const commit = sinon.spy()
+
+        if (localStorage.getItem('selectedProducts')) {
+          localStorage.removeItem('selectedProducts')
+        }
+        cart.actions.loadCart({commit})
+
+        return commit.should.not.have.been.called
+      })
+    })
+  })
 })
 
 // describe('Actions', () => {
