@@ -57,5 +57,25 @@ describe('Vuex module: product', () => {
         expect(product.getters.productList(state)).to.equal(state.productList)
       })
     })
+
+    describe('currency', () => {
+      it(`should return a currency`, () => {
+        const DEFAULT_CURRENCY = '$'
+        const state = {
+          currency: DEFAULT_CURRENCY
+        }
+
+        expect(product.getters.currency(state)).to.equal(DEFAULT_CURRENCY)
+      })
+      it(`should return default currency if the "currency" value 
+          is null`, () => {
+        const DEFAULT_CURRENCY = '$'
+        const state = {
+          currency: null
+        }
+
+        expect(product.getters.currency(state)).to.equal(DEFAULT_CURRENCY)
+      })
+    })
   })
 })
