@@ -1,5 +1,4 @@
 import product from '../../../src/store/modules/products/index'
-import { testAction } from '../../testutils'
 /* eslint-disable*/
 const actionsInjector = require('inject-loader!../../../src/store/modules/products/actions')
 /* eslint-enable */
