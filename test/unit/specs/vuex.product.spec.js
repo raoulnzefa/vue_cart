@@ -1,55 +1,23 @@
-// import mutations from '../../../src/store/modules/products/mutations'
 import product from '../../../src/store/modules/products/index'
-
+import { testAction } from '../../testutils'
 /* eslint-disable*/
 const actionsInjector = require('inject-loader!../../../src/store/modules/products/actions')
 /* eslint-enable */
 
-// helper for testing action with expected mutations and mutation payloads
-const testAction = (action, payload, state, expectedMutations, done) => {
-  let count = 0
-
-  // mock commit
-  const commit = (type, payload) => {
-    const mutation = expectedMutations[count]
-
-    try {
-      expect(type).to.equal(mutation.type)
-      if (payload) {
-        expect(payload).to.deep.equal(mutation.payload)
-      }
-    } catch (error) {
-      done(error)
-    }
-
-    count++
-    if (count >= expectedMutations.length) {
-      done()
-    }
-  }
-  // call the action with mocked store and arguments
-  action({ commit, state }, payload)
-
-  // check if no mutations should have been dispatched
-  if (expectedMutations.length === 0) {
-    expect(count).to.equal(0)
-    done()
-  }
-}
-
 // create the module with mocks for API
+const GET_PRODUCT_LIST_RESPONSE = "{ data: 'value' }"
+
 const actions = actionsInjector({
   '../../../api': {
     getProductList () {
       return new Promise(resolve => {
-        resolve([1, 2, 3])
+        resolve(GET_PRODUCT_LIST_RESPONSE)
       })
     }
   }
 })
 
 describe('Vuex module: product', () => {
-  // Mutations
   describe('Mutations', () => {
     describe('updateProductList', () => {
       it('should update a list of products', () => {
@@ -67,20 +35,15 @@ describe('Vuex module: product', () => {
 
   describe('Actions', () => {
     describe('loadProductList', () => {
-      it('should dispatch "updateProductList" mutation', done => {
-        const list = [1, 2, 3]
-        testAction(
-          actions.default.loadProductList,
-          null,
-          {},
-          [
-            {
-              type: 'updateProductList',
-              payload: list
-            }
-          ],
-          done
-        )
+      it('should dispatch "updateProductList" mutation', () => {
+        const commit = sinon.spy()
+
+        return Promise.resolve(actions.default.loadProductList({commit})).then(null, null, commit).then((result) => {
+          commit.should.have.been.calledWith(
+            'updateProductList',
+            GET_PRODUCT_LIST_RESPONSE
+          )
+        })
       })
     })
   })
