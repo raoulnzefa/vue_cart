@@ -36,6 +36,7 @@ describe('Component: App', () => {
     it(`should dispatch the "loadProductList" action`, () => {
       return actions.loadProductList.should.have.been.called
     })
+
     it(`should dispatch the "loadCart" action`, () => {
       return actions.loadCart.should.have.been.called
     })
