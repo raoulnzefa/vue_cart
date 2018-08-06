@@ -11,6 +11,7 @@
     <!-- Сhange the number of products -->
     <button @click="increaseOrderValue(item)">+</button>
     <input
+      class="product-cart-item__number-input"
       type="number"
       v-model="itemNumber"
       min="1"
@@ -56,7 +57,7 @@ export default {
       'removeFromCart'
     ]),
     validateInput (e) {
-      if (e.target.value < 1) e.target.value = 1
+      if (parseInt(e.target.value) < 1) e.target.value = 1
     }
   }
 }
