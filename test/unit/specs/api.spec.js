@@ -1,6 +1,6 @@
-import {getProductList} from '../../../src/api'
+// import {getProductList} from '../../../src/api'
 /* eslint-disable */
-const apiInjector = require('inject-loader!../../../src/store/modules/products/actions')
+const apiInjector = require('inject-loader!../../../src/api')
 /* eslint-enable */
 
 const DEFAULT_VALUE = 'value'
@@ -11,7 +11,7 @@ const api = apiInjector({
 describe('API', () => {
   describe('getProductList', () => {
     it('should return the list of products', () => {
-      return Promise.resolve(api.getProductList).then((result) => {
+      return api.getProductList().then((result) => {
         expect(result).to.be.equal(DEFAULT_VALUE)
       })
     })
