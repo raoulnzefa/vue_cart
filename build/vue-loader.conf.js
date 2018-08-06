@@ -8,6 +8,7 @@ const sourceMapEnabled = isProduction
 
 module.exports = {
   loaders: utils.cssLoaders({
+    scss: 'style!css!sass',
     sourceMap: sourceMapEnabled,
     extract: isProduction
   }),
