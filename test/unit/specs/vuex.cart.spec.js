@@ -38,6 +38,7 @@ describe('Vuex module: cart', () => {
         expect(object.date.toDateString()).to.equal(expectedDate.toDateString())
         expect(state.selectedProducts[0].number).to.equal(1)
       })
+
       it(`should append a new product to the list of selected products 
           with key "date" that equals to current date, and key "number", 
           that equals to "1"`, () => {
@@ -52,6 +53,7 @@ describe('Vuex module: cart', () => {
         expect(object.date.toDateString()).to.equal(expectedDate.toDateString())
         expect(state.selectedProducts[0].number).to.equal(1)
       })
+
       it(`should increase the "number" value of the object 
           if product with the similar id already exists in the 
           list of selected products`, () => {
@@ -68,13 +70,19 @@ describe('Vuex module: cart', () => {
     })
 
     describe('updateProductNumber', () => {
-      it('should update a number of the selected product', () => {
-        const selectedProduct = new Product(1, 'product', '50')
+      let selectedProduct, state
+
+      beforeEach(() => {
+        selectedProduct = new Product(1, 'product', '50')
         selectedProduct.number = 1
         selectedProduct.date = new Date()
-        const state = {
+
+        state = {
           selectedProducts: [selectedProduct]
         }
+      })
+
+      it('should update a number of the selected product', () => {
         cart.mutations.updateProductNumber(state, {
           product: state.selectedProducts[0],
           value: 10
@@ -82,14 +90,9 @@ describe('Vuex module: cart', () => {
 
         expect(state.selectedProducts[0].number).to.equal(10)
       })
+
       it(`should not update a number of the selected product if
           the input value is less then 1`, () => {
-        const selectedProduct = new Product(1, 'product', '50')
-        selectedProduct.number = 1
-        selectedProduct.date = new Date()
-        const state = {
-          selectedProducts: [selectedProduct]
-        }
         cart.mutations.updateProductNumber(state, {
           product: state.selectedProducts[0],
           value: -2
@@ -115,26 +118,28 @@ describe('Vuex module: cart', () => {
     })
 
     describe('decreaseProductNumber', () => {
-      it(`should decrease by 1 the value of the "number" property 
-          of the selected product`, () => {
-        const selectedProduct = new Product(1, 'product', '50')
-        selectedProduct.number = 2
+      let selectedProduct, state
+
+      beforeEach(() => {
+        selectedProduct = new Product(1, 'product', '50')
+        selectedProduct.number = 1
         selectedProduct.date = new Date()
-        const state = {
+
+        state = {
           selectedProducts: [selectedProduct]
         }
+      })
+
+      it(`should decrease by 1 the value of the "number" property 
+          of the selected product`, () => {
+        selectedProduct.number = 2
         cart.mutations.decreaseProductNumber(state, state.selectedProducts[0])
 
         expect(state.selectedProducts[0].number).to.equal(1)
       })
+
       it(`should not decrease the value if number of the      
           selected product is not grater than 1`, () => {
-        const selectedProduct = new Product(1, 'product', '50')
-        selectedProduct.number = 1
-        selectedProduct.date = new Date()
-        const state = {
-          selectedProducts: [selectedProduct]
-        }
         cart.mutations.decreaseProductNumber(state, state.selectedProducts[0])
 
         expect(state.selectedProducts[0].number).to.equal(1)
@@ -158,12 +163,22 @@ describe('Vuex module: cart', () => {
   })
 
   describe('Actions', () => {
+    let commit, dispatch, product, state
+
+    beforeEach(() => {
+      commit = sinon.spy()
+      dispatch = sinon.spy()
+      product = new Product(1, 'product', '50')
+      state = {
+        selectedProducts: [
+          product
+        ]
+      }
+    })
+
     describe('addOrder', () => {
       it(`should dispatch the "appendSelectedProduct" and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
-        const product = new Product(1, 'product', '50')
         cart.actions.addOrder({commit, dispatch}, product)
 
         commit.should.have.been.calledWith('appendSelectedProduct', product)
@@ -174,9 +189,6 @@ describe('Vuex module: cart', () => {
     describe('setOrderValue', () => {
       it(`should dispatch the "updateProductNumber" and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
-        const product = new Product(1, 'product', '50')
         const value = 10
         cart.actions.setOrderValue({commit, dispatch}, {
           product,
@@ -194,9 +206,6 @@ describe('Vuex module: cart', () => {
     describe('increaseOrderValue', () => {
       it(`should dispatch the "increaseProductNumber" mutation and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
-        const product = new Product(1, 'product', '50')
         cart.actions.increaseOrderValue({commit, dispatch}, product)
 
         commit.should.have.been.calledWith('increaseProductNumber', product)
@@ -207,9 +216,6 @@ describe('Vuex module: cart', () => {
     describe('decreaseOrderValue', () => {
       it(`should dispatch the "decreaseProductNumber" mutation and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
-        const product = new Product(1, 'product', '50')
         cart.actions.decreaseOrderValue({commit, dispatch}, product)
 
         commit.should.have.been.calledWith('decreaseProductNumber', product)
@@ -220,9 +226,6 @@ describe('Vuex module: cart', () => {
     describe('removeFromCart', () => {
       it(`should dispatch the "removeSelectedProduct" mutation and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
-        const product = new Product(1, 'product', '50')
         cart.actions.removeFromCart({commit, dispatch}, product)
 
         commit.should.have.been.calledWith('removeSelectedProduct', product)
@@ -233,8 +236,6 @@ describe('Vuex module: cart', () => {
     describe('clearCart', () => {
       it(`should dispatch the "updateSelectedProducts" mutation and
           action "syncCart"`, () => {
-        const commit = sinon.spy()
-        const dispatch = sinon.spy()
         cart.actions.clearCart({commit, dispatch})
 
         commit.should.have.been.calledWith('updateSelectedProducts')
@@ -245,12 +246,6 @@ describe('Vuex module: cart', () => {
     describe('syncCart', () => {
       it(`should save the "selectedItems" list to the "window.localStorage" 
           object`, () => {
-        const product = new Product(1, 'product', '50')
-        const state = {
-          selectedProducts: [
-            product
-          ]
-        }
         cart.actions.syncCart({state})
 
         expect(localStorage.getItem('selectedProducts')).to.equal(JSON.stringify(state.selectedProducts))
@@ -260,13 +255,6 @@ describe('Vuex module: cart', () => {
     describe('loadCart', () => {
       it(`should get the "selectedItems" list from the "window.localStorage" 
           and dispatch the "updateSelectedProducts" mutation`, () => {
-        const product = new Product(1, 'product', '50')
-        const state = {
-          selectedProducts: [
-            product
-          ]
-        }
-        const commit = sinon.spy()
         localStorage.setItem(
           'selectedProducts',
           JSON.stringify(state.selectedProducts)
@@ -278,10 +266,9 @@ describe('Vuex module: cart', () => {
           JSON.parse(localStorage.getItem('selectedProducts'))
         )
       })
+
       it(`should not load the "selectedItems" list from the 
           "window.localStorage" if it is empty`, () => {
-        const commit = sinon.spy()
-
         if (localStorage.getItem('selectedProducts')) {
           localStorage.removeItem('selectedProducts')
         }
@@ -293,29 +280,34 @@ describe('Vuex module: cart', () => {
   })
 
   describe('Getters', () => {
+    let product1, product2, product3, product4, product5
+
+    beforeEach(() => {
+      product1 = new Product(1, 'product1', '50')
+      product1.number = 1
+      product1.date = new Date()
+      product1.date.setDate(1)
+      product2 = new Product(2, 'product2', '50')
+      product2.number = 1
+      product2.date = new Date()
+      product2.date.setDate(2)
+      product3 = new Product(3, 'product3', '50')
+      product3.number = 1
+      product3.date = new Date()
+      product3.date.setDate(3)
+      product4 = new Product(4, 'product3', '50')
+      product4.number = 1
+      product4.date = new Date()
+      product4.date.setDate(4)
+      product5 = new Product(5, 'product3', '50')
+      product5.number = 1
+      product5.date = new Date()
+      product5.date.setDate(5)
+    })
+
     describe('selectedProducts', () => {
       it(`should return an array of the selected
           products sorted by date of selection`, () => {
-        const product1 = new Product(1, 'product1', '50')
-        product1.number = 1
-        product1.date = new Date()
-        product1.date.setDate(1)
-        const product2 = new Product(2, 'product2', '50')
-        product2.number = 1
-        product2.date = new Date()
-        product2.date.setDate(2)
-        const product3 = new Product(3, 'product3', '50')
-        product3.number = 1
-        product3.date = new Date()
-        product3.date.setDate(3)
-        const product4 = new Product(4, 'product3', '50')
-        product4.number = 1
-        product4.date = new Date()
-        product4.date.setDate(4)
-        const product5 = new Product(5, 'product3', '50')
-        product5.number = 1
-        product5.date = new Date()
-        product5.date.setDate(5)
         const state = {
           selectedProducts: [product2, product1, product3, product5, product4]
         }
@@ -323,6 +315,7 @@ describe('Vuex module: cart', () => {
 
         expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
       })
+
       it('should return "null" if "selectedProducts" is not array', () => {
         const state = {
           selectedProducts: null
@@ -331,23 +324,16 @@ describe('Vuex module: cart', () => {
         expect(cart.getters.selectedProducts(state)).to.equal(null)
       })
     })
+
     describe('selectedProductsCount', () => {
       it(`should return a count of the selected products`, () => {
-        const product1 = new Product(1, 'product1', '50')
-        product1.number = 1
-        product1.date = new Date()
-        const product2 = new Product(2, 'product2', '50')
-        product2.number = 1
-        product2.date = new Date()
-        const product3 = new Product(3, 'product3', '50')
-        product3.number = 1
-        product3.date = new Date()
         const state = {
           selectedProducts: [product1, product2, product3]
         }
 
         expect(cart.getters.selectedProductsCount(state)).to.equal(3)
       })
+
       it(`should return 0 if the "selectedProducts" is not array`, () => {
         const state = {
           selectedProducts: null
@@ -358,21 +344,13 @@ describe('Vuex module: cart', () => {
     })
     describe('selectedProductsPrice', () => {
       it(`should return a total price of the selected products`, () => {
-        const product1 = new Product(1, 'product1', '50')
-        product1.number = 1
-        product1.date = new Date()
-        const product2 = new Product(2, 'product2', '100')
-        product2.number = 1
-        product2.date = new Date()
-        const product3 = new Product(3, 'product3', '200')
-        product3.number = 1
-        product3.date = new Date()
         const state = {
           selectedProducts: [product1, product2, product3]
         }
 
-        expect(cart.getters.selectedProductsPrice(state)).to.equal(350)
+        expect(cart.getters.selectedProductsPrice(state)).to.equal(150)
       })
+
       it(`should return 0 if the "selectedProducts" is not array`, () => {
         const state = {
           selectedProducts: null
@@ -383,35 +361,3 @@ describe('Vuex module: cart', () => {
     })
   })
 })
-
-// describe('Actions', () => {
-//   describe('loadProductList', () => {
-//     it('should dispatch "updateProductList" mutation', done => {
-//       const list = [1, 2, 3]
-//       testAction(
-//         actions.default.loadProductList,
-//         null,
-//         {},
-//         [
-//           {
-//             type: 'updateProductList',
-//             payload: list
-//           }
-//         ],
-//         done
-//       )
-//     })
-//   })
-// })
-
-// describe('Getters', () => {
-//   describe('productList', () => {
-//     it('should return a list of products', () => {
-//       const state = {
-//         productList: [1, 2, 3]
-//       }
-
-//       expect(product.getters.productList(state)).to.equal(state.productList)
-//     })
-//   })
-// })
