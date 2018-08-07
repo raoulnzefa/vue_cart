@@ -5,7 +5,7 @@
       v-if="Array.isArray(items)"
     >
     <div
-      class="col-3"
+      class="col-md-4 col-sm-12 col-lg-3"
       v-for="item in items"
       :key="item.id"
     >

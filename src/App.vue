@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="col-md">
+        <div class="col">
           <router-link
             class="app__link navbar-brand"
             :to="{name:'products'}"
@@ -25,7 +25,7 @@
         </div>
       </nav>
     </header>
-    <router-view />
+    <router-view class="app__content" />
   </div>
 </template>
 
