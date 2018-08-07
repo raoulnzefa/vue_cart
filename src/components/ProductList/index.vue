@@ -2,11 +2,11 @@
     <div
       id="productList"
       class="product-list row mt-5"
-      v-if="Array.isArray(items)"
+      v-if="Array.isArray(productList) && productList.length>0"
     >
     <div
       class="col-md-4 col-sm-12 col-lg-3"
-      v-for="item in items"
+      v-for="item in productList"
       :key="item.id"
     >
       <product
@@ -28,14 +28,8 @@ export default {
   components: {
     Product
   },
-  props: {
-    items: {
-      type: Array,
-      default: null
-    }
-  },
   computed: {
-    ...mapGetters(['currency'])
+    ...mapGetters(['currency', 'productList'])
   },
   methods: {
     ...mapActions(['addOrder'])
