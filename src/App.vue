@@ -2,14 +2,20 @@
   <div id="app" class="app">
     <header>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <div class="col">
+        <div class="col d-flex justify-content-start align-items-end py-3">
           <router-link
-            class="app__link navbar-brand"
+            class="app__link navbar-brand py-0 mr-3 text-dark"
             :to="{name:'products'}"
             tag="a"
           >
-            <h1>Store</h1>
+            <span class="h1 app__title">
+              Store
+            </span>
           </router-link>
+          <icon name="chevron-right" class=" mr-3 mb-2"/>
+          <span class="h5 text-capitalize text-muted mb-1">
+            {{$route.name}}
+          </span>
         </div>
         <div class="col d-flex justify-content-end">
           <router-link
@@ -34,6 +40,7 @@ import { mapGetters } from 'vuex'
 import Icon from 'vue-awesome/components/Icon'
 
 import 'vue-awesome/icons/shopping-cart'
+import 'vue-awesome/icons/chevron-right'
 
 export default {
   name: 'App',

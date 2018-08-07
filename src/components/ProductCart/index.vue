@@ -3,7 +3,7 @@
     <!-- List of selected products -->
     <div
       class="product-cart__list row"
-      v-if="Array.isArray(selectedProducts)"
+      v-if="selectedProductsCount>0"
     >
       <product-cart-item
         v-for="item in selectedProducts"
@@ -11,10 +11,20 @@
         :item="item"
       />
     </div>
-    <div class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
+    <div v-else class="row">
+      <div class="col text-center mt-5">
+        <span class="h2 text-black-50">
+          Cart is empty
+        </span>
+      </div>
+    </div>
+    <div
+      v-if="selectedProductsCount>0"
+      class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light"
+    >
       <div class="col d-flex justify-content-between my-2">
         <!-- Total price -->
-        <h4 class="text-muted" v-if="selectedProductsPrice>0">
+        <h4 class="text-muted">
           Total price: {{selectedProductsPrice}}{{currency}}
         </h4>
         <!-- Clear cart -->
@@ -39,7 +49,12 @@ export default {
     ProductCartItem
   },
   computed: {
-    ...mapGetters(['selectedProducts', 'selectedProductsPrice', 'currency'])
+    ...mapGetters([
+      'selectedProducts',
+      'selectedProductsPrice',
+      'selectedProductsCount',
+      'currency'
+    ])
   },
   methods: {
     ...mapActions(['clearCart'])

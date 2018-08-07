@@ -1,6 +1,10 @@
 .app{
   padding-top: 5rem;
 
+  &__title {
+    line-height: 1.7rem;
+  }
+
   &__link{
     text-decoration: none;
   }
