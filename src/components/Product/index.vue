@@ -7,13 +7,16 @@
       class="product__picture card-img-top p-2"
       :src="item.picture" alt="img"
     >
-    <div class="card-body">
+    <div class="card-body text-center">
       <h5 class="product__title card-title">
         {{item.name}}
       </h5>
       <p class="product__price card-text">{{item.price}}{{currency}}</p>
+      <slot>
+        <!-- some content here -->
+      </slot>
       <button
-        class="product__button btn btn-primary"
+        class="product__button btn btn-primary btn-block"
         @click="$emit('button-click', item)"
       >
         {{buttonTitle}}

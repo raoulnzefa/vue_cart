@@ -1,10 +1,8 @@
 <template>
-  <div id="productCart" class="product-cart">
-    <!-- Clear cart -->
-    <button @click="clearCart()">Remove all</button>
+  <div id="productCart" class=" container-fluid product-cart">
     <!-- List of selected products -->
     <div
-      class="product-cart__list"
+      class="product-cart__list row"
       v-if="Array.isArray(selectedProducts)"
     >
       <product-cart-item
@@ -13,10 +11,21 @@
         :item="item"
       />
     </div>
-    <!-- Total price -->
-    <h3 v-if="selectedProductsPrice>0">
-      Total price: {{selectedProductsPrice}}{{currency}}
-    </h3>
+    <div class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light">
+      <div class="col d-flex justify-content-between my-2">
+        <!-- Total price -->
+        <h4 class="text-muted" v-if="selectedProductsPrice>0">
+          Total price: {{selectedProductsPrice}}{{currency}}
+        </h4>
+        <!-- Clear cart -->
+        <button
+          class="btn btn-outline-danger"
+          @click="clearCart()"
+        >
+          Clear cart
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -37,3 +46,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import '../../styles/product-cart.scss';
+</style>
