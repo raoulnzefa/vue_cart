@@ -1,6 +1,7 @@
 import { mount, createLocalVue } from 'vue-test-utils'
 import Vuex from 'vuex'
 import App from '../../../src/App.vue'
+import router from '../../../src/router'
 
 const localVue = createLocalVue()
 
@@ -28,7 +29,7 @@ describe('Component: App', () => {
     mount(App, {
       store,
       localVue,
-      stubs: ['router-link', 'router-view']
+      router
     })
   })
 
