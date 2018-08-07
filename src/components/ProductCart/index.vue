@@ -13,7 +13,7 @@
     </div>
     <div v-else class="row">
       <div class="col text-center mt-5">
-        <span class="h2 text-black-50">
+        <span class="h4 text-black-50">
           Cart is empty
         </span>
       </div>
