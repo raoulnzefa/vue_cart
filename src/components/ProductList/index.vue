@@ -1,20 +1,21 @@
 <template>
     <div
       id="productList"
-      class="product-list"
+      class="product-list row mt-5"
       v-if="Array.isArray(items)"
     >
-    <product
+    <div
+      class="col-3"
       v-for="item in items"
       :key="item.id"
-      :item="item"
-      :currency="currency"
-      button-title="Add to cart"
-      @button-click="addOrder"
-    />
-    <slot>
-      <!-- Additional features -->
-    </slot>
+    >
+      <product
+        :item="item"
+        :currency="currency"
+        button-title="Add to cart"
+        @button-click="addOrder"
+      />
+    </div>
   </div>
 </template>
 

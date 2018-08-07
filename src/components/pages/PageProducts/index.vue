@@ -1,7 +1,18 @@
 <template>
-  <div id="pageProducts" class="page-products">
-    <h2>Products</h2>
-    <product-list :items="productList" />
+  <div
+    id="pageProducts"
+    class="page-products container-fluid"
+  >
+    <div class="row">
+      <div class="col text-center">
+        <h2 class="mt-5">Products</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <product-list :items="productList" />
+      </div>
+    </div>
   </div>
 </template>
 
