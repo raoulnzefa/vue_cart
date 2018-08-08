@@ -1,8 +1,11 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  <nav
+    id="appNavbar"
+    class="app-navbar navbar fixed-top navbar-expand-lg navbar-light bg-light"
+  >
     <div class="col d-flex justify-content-start align-items-end py-3">
       <router-link
-        class="app__link navbar-brand py-0 mr-3 text-dark"
+        class="app-navbar__link navbar-brand py-0 mr-3 text-dark"
         :to="{name:'products'}"
         tag="a"
       >
@@ -17,7 +20,7 @@
     </div>
     <div class="col d-flex justify-content-end">
       <router-link
-        class="app__link"
+        class="app-navbar__link"
         :to="{name:'cart'}"
         tag="a"
       >
@@ -47,3 +50,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  @import '../../styles/app-navbar.scss';
+</style>
