@@ -2,7 +2,7 @@
   <div
     v-if="item"
     id="productAmountSetter"
-    class="product-amount-setter row text-center mt-2 mb-4"
+    class="product-amount-setter row text-center"
   >
     <div class="col-12 d-flex justify-content-between">
       <!-- Decrease amount -->

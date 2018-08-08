@@ -1,7 +1,7 @@
 <template>
     <div
       id="productList"
-      class="product-list row mt-5"
+      class="product-list row"
       v-if="Array.isArray(productList) && productList.length>0"
     >
     <div
@@ -10,6 +10,7 @@
       :key="item.id"
     >
       <product
+        class="mb-4"
         :item="item"
         :currency="currency"
         button-title="Add to cart"

@@ -3,7 +3,7 @@
     id="pageProducts"
     class="page-products container-fluid"
   >
-    <product-list />
+    <product-list class="mt-5" />
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div
     id="product"
-    class="product card mb-4"
+    class="product card"
   >
     <img
       class="product__picture card-img-top p-2"
@@ -13,7 +13,7 @@
       </h5>
       <p class="product__price card-text">{{item.price}}{{currency}}</p>
       <slot>
-        <!-- some content here -->
+        <!-- additional content here -->
       </slot>
       <button
         class="product__button btn btn-primary btn-block"

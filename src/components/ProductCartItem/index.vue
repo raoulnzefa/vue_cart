@@ -1,7 +1,7 @@
 <template>
   <div
     id="ProductCartItem"
-    class="product-cart-item col-lg-3 col-sm-12 col-md-4 mt-5"
+    class="product-cart-item"
   >
     <product
           :item="item"
@@ -17,7 +17,10 @@
           </h6>
         </div>
       </div>
-      <product-amount-setter :item="item" />
+      <product-amount-setter
+        :item="item"
+        class="mt-2 mb-4"
+      />
     </product>
   </div>
 </template>

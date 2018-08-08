@@ -1,12 +1,13 @@
 <template>
   <div
+      id="productCartBottomNav"
       class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light"
     >
       <div class="col d-flex justify-content-between my-2">
         <!-- Total price -->
-        <h4 class="text-muted">
+        <span class="h4 mb-0 text-muted">
           Total price: {{selectedProductsPrice}}{{currency}}
-        </h4>
+        </span>
         <!-- Clear cart -->
         <button
           class="btn btn-outline-danger"
