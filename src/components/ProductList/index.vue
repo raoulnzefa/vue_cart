@@ -13,9 +13,14 @@
         class="mb-4"
         :item="item"
         :currency="currency"
-        button-title="Add to cart"
-        @button-click="addOrder"
-      />
+      >
+        <button
+          class="btn btn-primary btn-block"
+          @click="addOrder(item)"
+        >
+          Add to cart
+        </button>
+      </product>
     </div>
   </div>
 </template>

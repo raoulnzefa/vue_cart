@@ -6,21 +6,22 @@
     <product
           :item="item"
           :currency="currency"
-          button-title="Remove from cart"
-          @button-click="removeFromCart"
     >
       <div class="row mt-4 ">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mb-2">
           <h6>
             <!-- Total price: -->
             <span>Total: {{item.price * item.number}}{{currency}}</span>
           </h6>
         </div>
       </div>
-      <product-amount-setter
-        :item="item"
-        class="mt-2 mb-4"
-      />
+      <product-amount-setter :item="item" />
+      <button
+          class="btn btn-danger btn-block mt-4"
+          @click="removeFromCart(item)"
+        >
+          Remove from cart
+      </button>
     </product>
   </div>
 </template>

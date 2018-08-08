@@ -15,12 +15,6 @@
       <slot>
         <!-- additional content here -->
       </slot>
-      <button
-        class="product__button btn btn-primary btn-block"
-        @click="$emit('button-click', item)"
-      >
-        {{buttonTitle}}
-      </button>
     </div>
   </div>
 </template>
@@ -36,10 +30,6 @@ export default {
     currency: {
       type: String,
       required: true
-    },
-    buttonTitle: {
-      type: String,
-      default: 'Button'
     }
   }
 }
