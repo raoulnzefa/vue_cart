@@ -11,7 +11,7 @@
         <div class="col-12 text-center mb-2">
           <h6>
             <!-- Total price: -->
-            <span>Total: {{item.price * item.number}}{{currency}}</span>
+            <span>Total: {{item.price * item.number}}{{currency.symbol}}</span>
           </h6>
         </div>
       </div>

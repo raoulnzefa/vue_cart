@@ -1,7 +1,10 @@
 import mutations from './mutations'
 import actions from './actions'
 
-const DEFAULT_CURRENCY = '$'
+const DEFAULT_CURRENCY = {
+  name: 'USD',
+  symbol: '$'
+}
 
 const state = {
   productList: null,

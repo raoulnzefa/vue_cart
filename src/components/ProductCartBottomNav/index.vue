@@ -9,7 +9,7 @@
           id="totalPrice"
           class="h4 mb-0 text-muted"
         >
-          Total price: {{selectedProductsPrice}}{{currency}}
+          Total price: {{selectedProductsPrice}}{{currency.symbol}}
         </span>
         <!-- Clear cart -->
         <button

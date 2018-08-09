@@ -11,7 +11,7 @@
       <h5 class="product__title card-title">
         {{item.name}}
       </h5>
-      <p class="product__price card-text">{{item.price}}{{currency}}</p>
+      <p class="product__price card-text">{{item.price}}{{currency.symbol}}</p>
       <slot>
         <!-- additional content here -->
       </slot>
