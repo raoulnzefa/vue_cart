@@ -28,7 +28,7 @@ export default {
       required: true
     },
     currency: {
-      type: String,
+      type: Object,
       required: true
     }
   }
