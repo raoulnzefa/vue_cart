@@ -1,19 +1,22 @@
 <template>
   <div
     id="productList"
-    class="product-list row"
+    class="product-list row px-2"
     v-if="productList"
   >
+    <!-- The list of products -->
     <div
       class="col-md-4 col-sm-12 col-lg-3"
       v-for="item in productList"
       :key="item.id"
     >
+      <!-- Product -->
       <product
         class="mb-4"
         :item="item"
         :currency="currency"
       >
+        <!-- "Add to cart" button -->
         <button
           class="product-list__button btn btn-primary btn-block"
           @click="addOrder(item)"

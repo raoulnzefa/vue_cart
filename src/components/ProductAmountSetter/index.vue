@@ -5,13 +5,14 @@
     class="product-amount-setter row text-center"
   >
     <div class="col-12 d-flex justify-content-between">
-      <!-- Decrease amount -->
+      <!-- The amount decreasing button -->
       <a
         class="product-amount-setter__decrease btn d-flex align-items-center"
         @click="decreaseOrderValue(item)"
       >
         <icon name="minus" scale="1"></icon>
       </a>
+      <!-- The amount setting input -->
       <input
         class="product-amount-setter__input form-control mx-3 text-center"
         type="number"
@@ -19,7 +20,7 @@
         min="1"
         @focusout="validateInput"
       >
-      <!-- Increase amount -->
+      <!-- The amount increasing button -->
       <a
         class="product-amount-setter__increase btn d-flex align-items-center"
         @click="increaseOrderValue(item)"
@@ -33,7 +34,6 @@
 <script>
 import { mapActions } from 'vuex'
 import Icon from 'vue-awesome/components/Icon'
-
 import 'vue-awesome/icons/plus'
 import 'vue-awesome/icons/minus'
 
@@ -49,8 +49,8 @@ export default {
     }
   },
   computed: {
-    /* Two-way computed property for
-    changing the value in the input */
+    /* Two-way computed property for changing
+    the number property of the current item */
     itemNumber: {
       get: function () {
         return this.item.number
@@ -66,6 +66,7 @@ export default {
       'increaseOrderValue',
       'decreaseOrderValue'
     ]),
+    // The validation func for the amount setting input
     validateInput (e) {
       if (parseInt(e.target.value) < 1) e.target.value = 1
     }

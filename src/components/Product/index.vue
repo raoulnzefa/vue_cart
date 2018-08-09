@@ -3,17 +3,24 @@
     id="product"
     class="product card"
   >
+    <!-- Picture -->
     <img
       class="product__picture card-img-top p-2"
-      :src="item.picture" alt="img"
+      :src="item.picture"
+      alt="img"
     >
+    <!-- Content -->
     <div class="card-body text-center">
+      <!-- Name -->
       <h5 class="product__title card-title">
         {{item.name}}
       </h5>
-      <p class="product__price card-text">{{item.price}}{{currency.symbol}}</p>
+      <!-- Price -->
+      <p class="product__price card-text">
+        {{item.price}}{{currency.symbol}}
+      </p>
       <slot>
-        <!-- additional content here -->
+        <!-- Additional content here -->
       </slot>
     </div>
   </div>

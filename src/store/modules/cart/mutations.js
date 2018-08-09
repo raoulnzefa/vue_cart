@@ -1,4 +1,5 @@
 const mutations = {
+  // Updates a selectedProducts list with the new value
   updateSelectedProducts (state, value) {
     state.selectedProducts = value
   },
@@ -30,6 +31,7 @@ const mutations = {
     }
   },
 
+  // Updates the number property with a new value for a specific product
   updateProductNumber (state, { product, value }) {
     if (value > 0) {
       const index = state.selectedProducts.indexOf(product)
@@ -37,11 +39,13 @@ const mutations = {
     }
   },
 
+  // Increases the number property for a specific product by 1
   increaseProductNumber (state, product) {
     const index = state.selectedProducts.indexOf(product)
     state.selectedProducts[index].number++
   },
 
+  // Decreases the number property for a specific product by 1
   decreaseProductNumber (state, product) {
     const index = state.selectedProducts.indexOf(product)
 
@@ -50,6 +54,7 @@ const mutations = {
     }
   },
 
+  // Removes the specific product from the list of selected products
   removeSelectedProduct (state, product) {
     const index = state.selectedProducts.indexOf(product)
     state.selectedProducts.splice(index, 1)

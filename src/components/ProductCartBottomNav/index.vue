@@ -11,7 +11,7 @@
         >
           Total price: {{selectedProductsPrice}}{{currency.symbol}}
         </span>
-        <!-- Clear cart -->
+        <!-- The cart clearing button-->
         <button
           id="clearCart"
           class="btn btn-outline-danger"

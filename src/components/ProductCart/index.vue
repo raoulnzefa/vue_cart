@@ -1,10 +1,11 @@
 <template>
-  <div id="productCart" class="container-fluid product-cart">
+  <div id="productCart" class="product-cart">
     <!-- List of selected products -->
     <div
-      class="product-cart__list row"
+      class="product-cart__list row px-2"
       v-if="selectedProducts"
     >
+      <!-- Cart item -->
       <product-cart-item
         class="col-lg-3 col-sm-12 col-md-4 mb-4"
         v-for="item in selectedProducts"
@@ -12,6 +13,7 @@
         :item="item"
       />
     </div>
+    <!-- Empty cart message -->
     <div v-else class="row">
       <div class="col text-center mt-5">
         <span
@@ -22,6 +24,8 @@
         </span>
       </div>
     </div>
+    <!-- Bottom navigation pane with info about total price
+    and the shopping cart clearing button -->
     <product-cart-bottom-nav
       v-if="selectedProducts"
     />

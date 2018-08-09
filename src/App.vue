@@ -3,7 +3,9 @@
     <header>
       <app-navbar />
     </header>
-    <router-view class="app__content" />
+    <section class="app__content container-fluid">
+      <router-view />
+    </section>
   </div>
 </template>
 

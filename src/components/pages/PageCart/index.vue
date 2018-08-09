@@ -1,7 +1,8 @@
 <template>
   <div
     id="pageCart"
-    class="page-cart container-fluid">
+    class="page-cart"
+  >
     <product-cart />
   </div>
 </template>

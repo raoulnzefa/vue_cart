@@ -3,21 +3,27 @@
     id="ProductCartItem"
     class="product-cart-item"
   >
+    <!-- The product item-->
     <product
-          :item="item"
-          :currency="currency"
+      :item="item"
+      :currency="currency"
     >
+      <!-- The total price for current item -->
       <div class="row mt-4 ">
         <div class="col-12 text-center mb-2">
           <h6>
-            <!-- Total price: -->
-            <span>Total: {{item.price * item.number}}{{currency.symbol}}</span>
+            <span>
+              Total: {{item.price * item.number}}{{currency.symbol}}
+            </span>
           </h6>
         </div>
       </div>
+      <!-- Setter of the product units amount -->
       <product-amount-setter
        class="mb-4"
-       :item="item" />
+       :item="item"
+      />
+      <!-- The removing item button -->
       <button
         class="product-cart-item__delete-button btn btn-danger btn-block"
         @click="removeFromCart(item)"

@@ -1,9 +1,9 @@
 <template>
   <div
     id="pageProducts"
-    class="page-products container-fluid"
+    class="page-products"
   >
-    <product-list class="mt-5" />
+    <product-list />
   </div>
 </template>
 
