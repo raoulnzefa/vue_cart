@@ -12,7 +12,13 @@ const state = {
 }
 
 const getters = {
-  productList: state => state.productList,
+  productList: state => {
+    if (Array.isArray(state.productList) && state.productList.length > 0) {
+      return state.productList
+    } else {
+      return null
+    }
+  },
   currency: state => {
     if (state.currency) {
       return state.currency

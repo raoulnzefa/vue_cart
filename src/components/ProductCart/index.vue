@@ -2,8 +2,8 @@
   <div id="productCart" class="container-fluid product-cart">
     <!-- List of selected products -->
     <div
-      class="product-cart__list row mt-5"
-      v-if="selectedProductsCount>0"
+      class="product-cart__list row"
+      v-if="selectedProducts"
     >
       <product-cart-item
         class="col-lg-3 col-sm-12 col-md-4 mb-4"
@@ -23,7 +23,7 @@
       </div>
     </div>
     <product-cart-bottom-nav
-      v-if="selectedProductsCount>0"
+      v-if="selectedProducts"
     />
   </div>
 </template>

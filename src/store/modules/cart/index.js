@@ -9,7 +9,8 @@ const getters = {
   /* Returns an array of selected
     products sorted by date of selection */
   selectedProducts: state => {
-    if (Array.isArray(state.selectedProducts)) {
+    if (Array.isArray(state.selectedProducts) &&
+      state.selectedProducts.length > 0) {
       return state.selectedProducts.sort((a, b) => {
         if (a.date > b.date) return -1
         else return 1

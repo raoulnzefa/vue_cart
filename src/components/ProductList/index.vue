@@ -1,9 +1,9 @@
 <template>
-    <div
-      id="productList"
-      class="product-list row"
-      v-if="Array.isArray(productList) && productList.length>0"
-    >
+  <div
+    id="productList"
+    class="product-list row"
+    v-if="productList"
+  >
     <div
       class="col-md-4 col-sm-12 col-lg-3"
       v-for="item in productList"
