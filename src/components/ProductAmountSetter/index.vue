@@ -7,13 +7,13 @@
     <div class="col-12 d-flex justify-content-between">
       <!-- Decrease amount -->
       <a
-        class="btn d-flex align-items-center"
+        class="product-amount-setter__decrease btn d-flex align-items-center"
         @click="decreaseOrderValue(item)"
       >
         <icon name="minus" scale="1"></icon>
       </a>
       <input
-        class="form-control mx-3 text-center"
+        class="product-amount-setter__input form-control mx-3 text-center"
         type="number"
         v-model="itemNumber"
         min="1"
@@ -21,7 +21,7 @@
       >
       <!-- Increase amount -->
       <a
-        class="btn d-flex align-items-center"
+        class="product-amount-setter__increase btn d-flex align-items-center"
         @click="increaseOrderValue(item)"
       >
         <icon name="plus" scale="1"></icon>

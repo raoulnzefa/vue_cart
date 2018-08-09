@@ -15,7 +15,7 @@
         :currency="currency"
       >
         <button
-          class="btn btn-primary btn-block"
+          class="product-list__button btn btn-primary btn-block"
           @click="addOrder(item)"
         >
           Add to cart

@@ -15,11 +15,13 @@
           </h6>
         </div>
       </div>
-      <product-amount-setter :item="item" />
+      <product-amount-setter
+       class="mb-4"
+       :item="item" />
       <button
-          class="btn btn-danger btn-block mt-4"
-          @click="removeFromCart(item)"
-        >
+        class="product-cart-item__delete-button btn btn-danger btn-block"
+        @click="removeFromCart(item)"
+      >
           Remove from cart
       </button>
     </product>

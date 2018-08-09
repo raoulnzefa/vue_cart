@@ -5,11 +5,15 @@
     >
       <div class="col d-flex justify-content-between my-2">
         <!-- Total price -->
-        <span class="h4 mb-0 text-muted">
+        <span
+          id="totalPrice"
+          class="h4 mb-0 text-muted"
+        >
           Total price: {{selectedProductsPrice}}{{currency}}
         </span>
         <!-- Clear cart -->
         <button
+          id="clearCart"
           class="btn btn-outline-danger"
           @click="clearCart()"
         >
