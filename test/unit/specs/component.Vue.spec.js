@@ -18,10 +18,12 @@ describe('Component: App', () => {
     }
     store = new Vuex.Store({
       state: {
+        productList: [],
         selectedProductsCount: 0
       },
       getters: {
-        selectedProductsCount: state => state.selectedProductsCount
+        selectedProductsCount: state => state.selectedProductsCount,
+        productList: state => state.productList
       },
       actions
     })

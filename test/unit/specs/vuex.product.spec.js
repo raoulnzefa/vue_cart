@@ -56,6 +56,22 @@ describe('Vuex module: product', () => {
 
         expect(product.getters.productList(state)).to.equal(state.productList)
       })
+
+      it('should return a null value if the lis of products is empty', () => {
+        const state = {
+          productList: []
+        }
+
+        expect(product.getters.productList(state)).to.equal(null)
+      })
+
+      it('should return a null value if the lis of products is not array', () => {
+        const state = {
+          productList: null
+        }
+
+        expect(product.getters.productList(state)).to.equal(null)
+      })
     })
 
     describe('currency', () => {

@@ -316,6 +316,14 @@ describe('Vuex module: cart', () => {
         expect(cart.getters.selectedProducts(state)).to.deep.equal(sortedArray)
       })
 
+      it('should return "null" if the "selectedProducts" is empty', () => {
+        const state = {
+          selectedProducts: []
+        }
+
+        expect(cart.getters.selectedProducts(state)).to.equal(null)
+      })
+
       it('should return "null" if "selectedProducts" is not array', () => {
         const state = {
           selectedProducts: null
