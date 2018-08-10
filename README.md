@@ -1,10 +1,10 @@
 # eshop
 
-> A small part of the online store on Vue.js with a list of goods and a shopping cart
+A small part of the online store on Vue.js with a list of goods and a shopping cart
 
 ## Project demo
 
-> https://vue-eshop.000webhostapp.com 
+https://vue-eshop.000webhostapp.com 
 
 ## Task description
 
@@ -13,10 +13,10 @@ The main page displays a list of products with a name, image and price. Each pro
 to the shopping cart, with more than one time.
 At the top, a link to the "shopping cart" page is displayed with the quantity counter of the ordered goods.
 
-The "shopping cart" page displays the list of ordered goods sorted by the time of the addition (the last one added 
-at the top).
-Goods from the shopping cart can be deleted (one at a time or all at once), as well as change the number of ordered 
-items. 
+The "shopping cart" page displays the list of ordered goods sorted by the time of the addition (the last one 
+added at the top).
+Goods from the shopping cart can be deleted (one at a time or all at once), as well as change the number of 
+ordered items. 
 At the bottom of the page, the total price of the order is displayed.
 
 Functional requirements:
