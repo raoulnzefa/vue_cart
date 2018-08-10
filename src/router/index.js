@@ -6,6 +6,7 @@ import PageCart from '../components/page/PageCart'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
