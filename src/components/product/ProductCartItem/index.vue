@@ -24,12 +24,11 @@
        :item="item"
       />
       <!-- The removing item button -->
-      <button
-        class="product-cart-item__delete-button btn btn-danger btn-block"
-        @click="removeFromCart(item)"
-      >
-          Remove from cart
-      </button>
+      <product-button
+        caption="Remove from cart"
+        :classes="['btn-danger']"
+        @button-click="removeFromCart(item)"
+      />
     </product>
   </div>
 </template>
@@ -38,12 +37,14 @@
 import { mapActions, mapGetters } from 'vuex'
 import Product from '../Product'
 import ProductAmountSetter from '../ProductAmountSetter'
+import ProductButton from '../ProductButton'
 
 export default {
   name: 'ProductCartItem',
   components: {
     Product,
-    ProductAmountSetter
+    ProductAmountSetter,
+    ProductButton
   },
   props: {
     item: {

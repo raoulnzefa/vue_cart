@@ -17,12 +17,11 @@
         :currency="currency"
       >
         <!-- "Add to cart" button -->
-        <button
-          class="product-list__button btn btn-primary btn-block"
-          @click="addOrder(item)"
-        >
-          Add to cart
-        </button>
+        <product-button
+          caption="Add to cart"
+          :classes="['btn-primary']"
+          @button-click="addOrder(item)"
+        />
       </product>
     </div>
   </div>
@@ -31,11 +30,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import Product from '../Product'
+import ProductButton from '../ProductButton'
 
 export default {
   name: 'ProductList',
   components: {
-    Product
+    Product,
+    ProductButton
   },
   computed: {
     ...mapGetters(['currency', 'productList'])

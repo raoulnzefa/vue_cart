@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ProductList from '../../ProductList'
+import ProductList from '../../product/ProductList'
 
 export default {
   name: 'PageProducts',

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import PageProducts from '../components/pages/PageProducts'
-import PageCart from '../components/pages/PageCart'
+import PageProducts from '../components/page/PageProducts'
+import PageCart from '../components/page/PageCart'
 
 Vue.use(Router)
 

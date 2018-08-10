@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ProductCart from '../../ProductCart'
+import ProductCart from '../../product/ProductCart'
 
 export default {
   name: 'PageCart',

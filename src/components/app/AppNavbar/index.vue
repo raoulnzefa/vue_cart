@@ -59,5 +59,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../styles/app-navbar.scss';
+  @import '../../../styles/app-navbar.scss';
 </style>
