@@ -1,6 +1,8 @@
 # eshop
 
-> A Vue.js project
+> A small part of the online store on Vue.js with a list of goods and a shopping cart
+
+> #Project demo: https://vue-eshop.000webhostapp.com 
 
 ## Build Setup
 
