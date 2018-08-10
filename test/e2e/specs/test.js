@@ -19,9 +19,9 @@ module.exports = {
       .assert.elementNotPresent('.app-navbar__counter')
       .assert.elementPresent('#productList')
       .assert.elementPresent('.product')
-      .assert.elementPresent('.product-list__button')
+      .assert.elementPresent('.product-button')
       // Select product buttons
-      .elements('css selector', '.product-list__button', result => {
+      .elements('css selector', '.product-button', result => {
         const elements = result.value
         if (elements.length >= 2) {
           browser
@@ -58,7 +58,7 @@ module.exports = {
       // Go to the home page
       .click('#homeLink')
       .assert.urlContains('products')
-      .elements('css selector', '.product-list__button', result => {
+      .elements('css selector', '.product-button', result => {
         // Select item buttons in the products list
         const elements = result.value
 
@@ -128,7 +128,7 @@ module.exports = {
       })
       // Delete 1 cart item
       .execute(() => {
-        document.querySelector('.product-cart-item__delete-button').click()
+        document.querySelector('.product-button').click()
       })
       // Make sure that the 1 cart item was deleted
       .elements('css selector', '.product-cart-item', result => {

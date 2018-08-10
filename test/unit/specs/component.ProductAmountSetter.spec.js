@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from 'vue-test-utils'
 import Vuex from 'vuex'
-import ProductAmountSetter from '../../../src/components/ProductAmountSetter'
+import ProductAmountSetter from '../../../src/components/product/ProductAmountSetter'
 import { Product } from '../../testutils/classes'
 
 const localVue = createLocalVue()
