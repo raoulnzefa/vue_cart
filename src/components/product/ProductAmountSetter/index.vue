@@ -4,17 +4,17 @@
     id="productAmountSetter"
     class="product-amount-setter row text-center"
   >
-    <div class="col-12 d-flex justify-content-between">
+    <div class="col-12 d-flex justify-content-around">
       <!-- The amount decreasing button -->
       <a
-        class="product-amount-setter__decrease btn d-flex align-items-center"
+        class="product-amount-setter__decrease btn d-flex align-items-center px-0"
         @click="decreaseOrderValue(item)"
       >
         <icon name="minus" scale="1"></icon>
       </a>
       <!-- The amount setting input -->
       <input
-        class="product-amount-setter__input form-control mx-3 text-center"
+        class="product-amount-setter__input form-control mx-0 text-center"
         type="number"
         v-model="itemNumber"
         min="1"
@@ -22,7 +22,7 @@
       >
       <!-- The amount increasing button -->
       <a
-        class="product-amount-setter__increase btn d-flex align-items-center"
+        class="product-amount-setter__increase btn d-flex align-items-center px-0"
         @click="increaseOrderValue(item)"
       >
         <icon name="plus" scale="1"></icon>
@@ -73,3 +73,7 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+@import "../../../styles/product-amount-setter";
+</style>
