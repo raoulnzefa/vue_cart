@@ -1,4 +1,4 @@
-# eshop
+# Cart
 
 A small part of the online store on Vue.js with a list of goods and a shopping cart
 
